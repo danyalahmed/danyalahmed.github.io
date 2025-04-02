@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Privacy Policies</title>
+    <style>
+        /* Basic Reset & Body Style */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            display: flex; /* Use flexbox for layout */
+            min-height: 100vh; /* Ensure layout takes full viewport height */
+            background-color: #f8f9fa; /* Light background for the page */
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 220px; /* Width of the sidebar */
+            background-color: #e9ecef; /* Sidebar background color */
+            padding: 20px;
+            border-right: 1px solid #ced4da; /* Separator line */
+            height: 100vh; /* Full height */
+            position: sticky; /* Keep sidebar visible on scroll */
+            top: 0;
+            overflow-y: auto; /* Add scrollbar if content overflows */
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            color: #495057;
+            text-align: center;
+            border-bottom: 1px solid #adb5bd;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #007bff; /* Link color */
+            border-radius: 4px;
+            margin-bottom: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #dee2e6; /* Hover background */
+            color: #0056b3; /* Darker link color on hover */
+        }
+
+        .sidebar ul li a.active-link {
+            background-color: #007bff; /* Active link background */
+            color: #fff; /* Active link text color */
+            font-weight: bold;
+        }
+
+        /* Content Area Styles */
+        .content {
+            flex-grow: 1; /* Takes remaining width */
+            padding: 30px;
+            overflow-y: auto; /* Allow content scrolling */
+        }
+
+        .content h1 {
+            color: #343a40;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Individual Policy Styles */
+        .policy-content {
+            display: none; /* Hide all policies by default */
+            background-color: #ffffff; /* White background for policy text */
+            border: 1px solid #dee2e6; /* Subtle border */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+        }
+
+        .policy-content.active {
+            display: block; /* Show the active policy */
+        }
+
+        .policy-content h2 {
+            color: #495057;
+            margin-top: 0;
+        }
+
+        .policy-content h3 {
+            color: #6c757d;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .policy-content p,
+        .policy-content ul,
+        .policy-content ol {
+            margin-bottom: 1em;
+        }
+
+        .policy-content strong {
+             color: #343a40;
+        }
+
+        /* Initial message style */
+        #default-message {
+             /* Inherits .policy-content styles but we ensure it's active initially */
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>App List</h2>
+        <ul id="app-list">
+            <li><a href="#" data-policy-id="chanda-calculator-policy">Chanda Calculator</a></li>
+            </ul>
+    </nav>
+
+    <main class="content">
+        <h1>Privacy Policies</h1>
+
+        <div id="default-message" class="policy-content active">
+            <h2>Welcome</h2>
+            <p>Please select an application from the sidebar menu to view its specific Privacy Policy.</p>
+        </div>
+
+        <div id="chanda-calculator-policy" class="policy-content">
+            <h2>Chanda Calculator Privacy Policy</h2>
+            <p><strong>Last Updated:</strong> April 2, 2025</p>
+
+            <h3>Introduction</h3>
+            <p>This Privacy Policy describes how the Chanda Calculator application ("App") handles information when you use it. This App is designed to help members calculate their estimated monthly Chanda contributions based on their status and, optionally, their income.</p>
+            <p>Your privacy is important to us. This App is designed with privacy as a priority.</p>
+
+            <h3>Information We Process</h3>
+            <p>To perform the calculation, the App requires you to input certain information:</p>
+            <ul>
+                <li><strong>Member Status:</strong> You need to select your status (e.g., Atfal, Student, Other). This determines the calculation rules applied.</li>
+                <li><strong>Yearly Income (£):</strong> You have the <strong>option</strong> to enter your yearly income in British Pounds. This is used to calculate income-based Chanda percentages for 'Student' and 'Other' statuses. If you do not provide an income:
+                    <ul>
+                        <li>For 'Student' status, a default income (£100) is used for calculation purposes, or minimums are applied as per the rules.</li>
+                        <li>For 'Other' status, minimum Chanda amounts are applied.</li>
+                    </ul>
+                 </li>
+            </ul>
+            <p>This information is used solely for the purpose of calculating the estimated Chanda amounts (Qiadat, Ijtema, Aam, Jalsa Salana) within the App according to predefined rules.</p>
+
+            <h3>How We Use Your Information</h3>
+            <p>The information you provide (Status and optional Income) is used exclusively to perform the Chanda calculation requested by you. The calculations happen <strong>locally on your device</strong>.</p>
+
+            <h3>Data Storage and Retention</h3>
+            <p>The Chanda Calculator App <strong>does not store</strong> the information you enter (Status, Income) persistently on your device after you close the App. The data is processed in real-time for the calculation and is discarded when the App session ends or the inputs are cleared.</p>
+            <p>We do not have access to the data you enter.</p>
+
+            <h3>Data Sharing</h3>
+            <p>We <strong>do not collect, store remotely, transmit, or share</strong> any personal or financial information you enter into the Chanda Calculator App with us or any third parties. All processing occurs locally on your device.</p>
+
+            <h3>Data Security</h3>
+            <p>As the App processes data locally and does not store or transmit it, the security of the data while using the App relies on the general security of your own device (e.g., device passcode, operating system security).</p>
+
+            <h3>Children's Privacy</h3>
+            <p>While the App includes an "Atfal" status for calculation purposes, the App is not intended for direct use by children without the supervision of a parent or guardian. We do not knowingly collect any personally identifiable information. The status selection and optional income are used only for the calculation as described.</p>
+
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the App or associated documentation. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at: dac.developer.acc@outlook.com</p>
+        </div>
+
+        </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get references to sidebar links and content sections
+            const appLinks = document.querySelectorAll('.sidebar ul li a');
+            const policyContents = document.querySelectorAll('.policy-content');
+            const defaultMessage = document.getElementById('default-message');
+
+            // Add click event listener to each app link in the sidebar
+            appLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Stop the link from navigating
+
+                    // Get the ID of the policy content to show from the link's data attribute
+                    const targetPolicyId = this.getAttribute('data-policy-id');
+
+                    // Hide all policy content sections first
+                    policyContents.forEach(content => {
+                        content.classList.remove('active'); // Remove 'active' class to hide
+                    });
+
+                    // Remove the 'active-link' class from all sidebar links
+                    appLinks.forEach(navLink => {
+                         navLink.classList.remove('active-link');
+                    });
+
+                    // Find the target policy content section by its ID
+                    const targetPolicy = document.getElementById(targetPolicyId);
+
+                    // If the target section exists, show it and highlight the link
+                    if (targetPolicy) {
+                        targetPolicy.classList.add('active'); // Add 'active' class to show
+                        this.classList.add('active-link'); // Highlight the clicked link
+                    } else {
+                        // If the target ID doesn't match any content (should not happen with correct setup),
+                        // fall back to showing the default message.
+                        defaultMessage.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
