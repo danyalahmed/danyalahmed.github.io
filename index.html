@@ -124,14 +124,14 @@
     <nav class="sidebar">
         <h2>App List</h2>
         <ul id="app-list">
-            <li><a href="#" data-policy-id="chanda-calculator-policy">Chanda Calculator</a></li>
+            <li><a href="#chanda-calculator-policy">Chanda Calculator</a></li>
             </ul>
     </nav>
 
     <main class="content">
         <h1>Privacy Policies</h1>
 
-        <div id="default-message" class="policy-content active">
+        <div id="default-message" class="policy-content">
             <h2>Welcome</h2>
             <p>Please select an application from the sidebar menu to view its specific Privacy Policy.</p>
         </div>
@@ -184,43 +184,96 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get references to sidebar links and content sections
+            // Get references to sidebar links, content sections, and default message
             const appLinks = document.querySelectorAll('.sidebar ul li a');
             const policyContents = document.querySelectorAll('.policy-content');
             const defaultMessage = document.getElementById('default-message');
 
-            // Add click event listener to each app link in the sidebar
-            appLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault(); // Stop the link from navigating
+            /**
+             * Displays a specific policy section based on its ID and highlights the corresponding link.
+             * Hides all other policy sections. Shows default message if ID is invalid or null.
+             * @param {string|null} policyId - The ID of the policy section to display (without '#'), or null to show default.
+             */
+            function displayPolicy(policyId) {
+                let policyDisplayed = false; // Flag to track if a valid policy was shown
 
-                    // Get the ID of the policy content to show from the link's data attribute
-                    const targetPolicyId = this.getAttribute('data-policy-id');
-
-                    // Hide all policy content sections first
-                    policyContents.forEach(content => {
-                        content.classList.remove('active'); // Remove 'active' class to hide
-                    });
-
-                    // Remove the 'active-link' class from all sidebar links
-                    appLinks.forEach(navLink => {
-                         navLink.classList.remove('active-link');
-                    });
-
-                    // Find the target policy content section by its ID
-                    const targetPolicy = document.getElementById(targetPolicyId);
-
-                    // If the target section exists, show it and highlight the link
-                    if (targetPolicy) {
-                        targetPolicy.classList.add('active'); // Add 'active' class to show
-                        this.classList.add('active-link'); // Highlight the clicked link
-                    } else {
-                        // If the target ID doesn't match any content (should not happen with correct setup),
-                        // fall back to showing the default message.
-                        defaultMessage.classList.add('active');
-                    }
+                // Hide all policy content sections first
+                policyContents.forEach(content => {
+                    content.classList.remove('active');
                 });
+
+                // Remove the 'active-link' class from all sidebar links
+                appLinks.forEach(navLink => {
+                     navLink.classList.remove('active-link');
+                });
+
+                // If a valid policyId is provided, try to show it
+                if (policyId) {
+                    const targetPolicy = document.getElementById(policyId);
+                    if (targetPolicy) {
+                        targetPolicy.classList.add('active'); // Show the target policy
+                        policyDisplayed = true;
+
+                        // Highlight the corresponding link in the sidebar
+                        appLinks.forEach(navLink => {
+                            // Check if the link's href matches the target policy ID (including '#')
+                            if (navLink.getAttribute('href') === '#' + policyId) {
+                                navLink.classList.add('active-link');
+                            }
+                        });
+                    }
+                }
+
+                // If no specific policy was displayed (e.g., invalid ID, no ID provided), show the default message
+                if (!policyDisplayed && defaultMessage) {
+                     defaultMessage.classList.add('active');
+                }
+            }
+
+            /**
+             * Handles clicks on the sidebar links.
+             * Prevents default navigation, updates URL hash, and displays the selected policy.
+             * @param {Event} event - The click event object.
+             */
+            function handleLinkClick(event) {
+                event.preventDefault(); // Stop the browser from jumping to the anchor
+                const link = event.currentTarget; // Get the clicked link element
+                const targetPolicyId = link.getAttribute('href').substring(1); // Get ID from href (remove '#')
+
+                // Manually update the URL hash without causing a page jump/scroll
+                if (window.history.pushState) {
+                    // Use pushState to change the hash without triggering hashchange immediately (smoother)
+                    window.history.pushState(null, '', '#' + targetPolicyId);
+                } else {
+                    // Fallback for older browsers
+                    window.location.hash = '#' + targetPolicyId;
+                }
+
+
+                // Display the clicked policy section
+                displayPolicy(targetPolicyId);
+            }
+
+            /**
+             * Reads the current URL hash and displays the corresponding policy.
+             * Called on initial load and when the hash changes (e.g., back/forward buttons).
+             */
+            function handleHashChange() {
+                const currentHash = window.location.hash.substring(1); // Get hash without '#'
+                displayPolicy(currentHash); // Display policy based on hash, or default if hash is empty/invalid
+            }
+
+            // Add click listeners to all sidebar links
+            appLinks.forEach(link => {
+                link.addEventListener('click', handleLinkClick);
             });
+
+            // Listen for changes in the URL hash (e.g., browser back/forward buttons)
+            window.addEventListener('hashchange', handleHashChange);
+
+            // Call handleHashChange on initial page load to show the correct policy if a hash is present
+            handleHashChange();
+
         });
     </script>
 
