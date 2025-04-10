@@ -1,111 +1,145 @@
 /* Basic Reset & Body Style */
 body {
- font-family: Arial, sans-serif;
- margin: 0;
- line-height: 1.6;
- display: flex; /* Use flexbox for layout */
- min-height: 100vh; /* Ensure layout takes full viewport height */
- background-color: #f8f9fa; /* Light background for the page */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  line-height: 1.7;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f7f6; /* Softer background */
+  color: #333; /* Darker text for better readability */
 }
 
 /* Sidebar Styles */
 .sidebar {
- width: 220px; /* Width of the sidebar */
- background-color: #e9ecef; /* Sidebar background color */
- padding: 20px;
- border-right: 1px solid #ced4da; /* Separator line */
- height: 100vh; /* Full height */
- position: sticky; /* Keep sidebar visible on scroll */
- top: 0;
- overflow-y: auto; /* Add scrollbar if content overflows */
+  min-width: 250px; /* Minimum width for the sidebar */
+  max-width: 300px;
+  background-color: #343a40; /* Dark background for sidebar */
+  color: #fff; /* White text for sidebar */
+  padding: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 .sidebar h2 {
- margin-top: 0;
- color: #495057;
- text-align: center;
- border-bottom: 1px solid #adb5bd;
- padding-bottom: 10px;
+  margin-top: 0;
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .sidebar ul {
- list-style: none;
- padding: 0;
- margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.sidebar ul li a {
- display: block;
- padding: 10px 15px;
- text-decoration: none;
- color: #007bff; /* Link color */
- border-radius: 4px;
- margin-bottom: 5px;
- transition: background-color 0.2s ease;
+.sidebar ul li a, .sidebar a {
+  display: block;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #ddd; /* Light gray for links */
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.sidebar ul li a:hover {
- background-color: #dee2e6; /* Hover background */
- color: #0056b3; /* Darker link color on hover */
+.sidebar ul li a:hover, .sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-.sidebar ul li a.active-link {
- background-color: #007bff; /* Active link background */
- color: #fff; /* Active link text color */
- font-weight: bold;
+.sidebar ul li a.active-link, .sidebar a.active-link {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
 
 /* Content Area Styles */
 .content {
- flex-grow: 1; /* Takes remaining width */
- padding: 30px;
- overflow-y: auto; /* Allow content scrolling */
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: #fff; /* White background for content */
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05); /* Add subtle shadow */
 }
 
 .content h1 {
- color: #343a40;
- border-bottom: 2px solid #dee2e6;
- padding-bottom: 10px;
- margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 /* Individual Policy Styles */
 .policy-content {
- display: none; /* Hide all policies by default */
- background-color: #ffffff; /* White background for policy text */
- border: 1px solid #dee2e6; /* Subtle border */
- padding: 20px;
- margin-top: 20px;
- border-radius: 5px;
- box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+  display: none;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 25px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .policy-content.active {
- display: block; /* Show the active policy */
+  display: block;
 }
 
 .policy-content h2 {
- color: #495057;
- margin-top: 0;
+  color: #444;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 .policy-content h3 {
- color: #6c757d;
- margin-top: 1.5em;
- margin-bottom: 0.5em;
+  color: #555;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
 }
 
 .policy-content p,
 .policy-content ul,
 .policy-content ol {
- margin-bottom: 1em;
+  margin-bottom: 1.2em;
+  color: #666;
 }
 
 .policy-content strong {
- color: #343a40;
+  color: #333;
 }
 
 /* Initial message style */
 #default-message {
- /* Inherits .policy-content styles but we ensure it's active initially */
+  /* Inherits .policy-content styles but we ensure it's active initially */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Stack sidebar and content vertically */
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 20px;
+    box-shadow: none;
+  }
 }
