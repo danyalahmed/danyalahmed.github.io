@@ -32,7 +32,7 @@
                 files.forEach(file => {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = `policies/${file}`;
+                    link.href = `#${file.replace('.html', '')}`; // Construct the href correctly
                     link.textContent = file.replace(/-/g, ' ').trim();
                     listItem.appendChild(link);
                     appList.appendChild(listItem);

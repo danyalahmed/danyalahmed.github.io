@@ -37,14 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const link = event.currentTarget; // Get the clicked link element
         const href = link.getAttribute('href');
-        let targetPolicyId = href && href.startsWith('#') ? href.substring(1) : href; // Validate href and get ID
+        let targetPolicyId = href && href.startsWith('#') ? href.substring(1) : null; // Validate href and get ID
 
         // Manually update the URL hash without causing a page jump/scroll
-        let newHash = targetPolicyId;
-        if (targetPolicyId !== 'index.html' && targetPolicyId) {
+        let newHash = '';
+        if (targetPolicyId) {
             newHash = '#' + targetPolicyId;
-        } else {
-            newHash = ''; // Clear the hash for index.html
         }
 
         if (window.history.pushState) {
