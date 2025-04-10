@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function displayPolicy(policyId) {
         if (policyId) {
-            fetch(`/policies/${policyId}-policy.html`)
+            fetch(`/policies/${policyId}.html`) // Corrected URL construction
                 .then(response => response.text())
                 .then(data => {
                     content.innerHTML = data;
@@ -33,18 +33,27 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {Event} event - The click event object.
      */
     function handleLinkClick(event) {
+        event.preventDefault(); // Prevent default link behavior
+
         const link = event.currentTarget; // Get the clicked link element
-        const targetPolicyId = link.getAttribute('href').substring(1); // Get ID from href (remove '#')
+        const href = link.getAttribute('href');
+        let targetPolicyId = href && href.startsWith('#') ? href.substring(1) : href; // Validate href and get ID
 
         // Manually update the URL hash without causing a page jump/scroll
-        if (window.history.pushState) {
-            // Use pushState to change the hash without triggering hashchange immediately (smoother)
-            window.history.pushState(null, '', '#' + targetPolicyId);
+        let newHash = targetPolicyId;
+        if (targetPolicyId !== 'index.html' && targetPolicyId) {
+            newHash = '#' + targetPolicyId;
         } else {
-            // Fallback for older browsers
-            window.location.hash = '#' + targetPolicyId;
+            newHash = ''; // Clear the hash for index.html
         }
 
+        if (window.history.pushState) {
+            // Use pushState to change the hash without triggering hashchange immediately (smoother)
+            window.history.pushState(null, '', newHash);
+        } else {
+            // Fallback for older browsers
+            window.location.hash = newHash;
+        }
 
         // Display the clicked policy section
         displayPolicy(targetPolicyId);
@@ -56,13 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function handleHashChange() {
         const currentHash = window.location.hash.substring(1); // Get hash without '#'
-        displayPolicy(currentHash); // Display policy based on hash, or default if hash is empty/invalid
+        displayPolicy(currentHash || null); // Display policy based on hash, or default if hash is empty/invalid
     }
 
     // Listen for changes in the URL hash (e.g., browser back/forward buttons)
     window.addEventListener('hashchange', handleHashChange);
 
-    // Call handleHashChange on initial page load to show the correct policy if a hash is present
-    handleHashChange();
-
+    // Attach event listeners to sidebar links, excluding the index link
+    const sidebarLinks = document.querySelectorAll('.sidebar a:not([href="#index.html"])');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', handleLinkClick);
+    });
 });
