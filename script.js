@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const href = link.getAttribute('href');
 
-            if (href === 'index.html') {
-                window.location.href = 'index.html'; // Full page load for index
+            if (href === 'index') {
+                window.location.href = '/'; // Full page load for index
                 return;
             }
 
