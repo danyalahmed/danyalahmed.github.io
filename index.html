@@ -32,8 +32,8 @@
                 files.forEach(file => {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = `#${file}-policy`;
-                    link.textContent = file.replace(/-/g, ' ').replace(/policy/ig, '').trim();
+                    link.href = `#${file}`;
+                    link.textContent = file.replace(/-/g, ' ').trim();
                     listItem.appendChild(link);
                     appList.appendChild(listItem);
                 });
