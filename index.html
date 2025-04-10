@@ -4,128 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Privacy Policies</title>
-    <style>
-        /* Basic Reset & Body Style */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            display: flex; /* Use flexbox for layout */
-            min-height: 100vh; /* Ensure layout takes full viewport height */
-            background-color: #f8f9fa; /* Light background for the page */
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            width: 220px; /* Width of the sidebar */
-            background-color: #e9ecef; /* Sidebar background color */
-            padding: 20px;
-            border-right: 1px solid #ced4da; /* Separator line */
-            height: 100vh; /* Full height */
-            position: sticky; /* Keep sidebar visible on scroll */
-            top: 0;
-            overflow-y: auto; /* Add scrollbar if content overflows */
-        }
-
-        .sidebar h2 {
-            margin-top: 0;
-            color: #495057;
-            text-align: center;
-            border-bottom: 1px solid #adb5bd;
-            padding-bottom: 10px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar ul li a {
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #007bff; /* Link color */
-            border-radius: 4px;
-            margin-bottom: 5px;
-            transition: background-color 0.2s ease;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #dee2e6; /* Hover background */
-            color: #0056b3; /* Darker link color on hover */
-        }
-
-        .sidebar ul li a.active-link {
-            background-color: #007bff; /* Active link background */
-            color: #fff; /* Active link text color */
-            font-weight: bold;
-        }
-
-        /* Content Area Styles */
-        .content {
-            flex-grow: 1; /* Takes remaining width */
-            padding: 30px;
-            overflow-y: auto; /* Allow content scrolling */
-        }
-
-        .content h1 {
-            color: #343a40;
-            border-bottom: 2px solid #dee2e6;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        /* Individual Policy Styles */
-        .policy-content {
-            display: none; /* Hide all policies by default */
-            background-color: #ffffff; /* White background for policy text */
-            border: 1px solid #dee2e6; /* Subtle border */
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
-        }
-
-        .policy-content.active {
-            display: block; /* Show the active policy */
-        }
-
-        .policy-content h2 {
-            color: #495057;
-            margin-top: 0;
-        }
-
-        .policy-content h3 {
-            color: #6c757d;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
-
-        .policy-content p,
-        .policy-content ul,
-        .policy-content ol {
-            margin-bottom: 1em;
-        }
-
-        .policy-content strong {
-             color: #343a40;
-        }
-
-        /* Initial message style */
-        #default-message {
-             /* Inherits .policy-content styles but we ensure it's active initially */
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="sidebar">
         <h2>App List</h2>
         <ul id="app-list">
-            <li><a href="#chanda-calculator-policy">Chanda Calculator</a></li>
-            </ul>
+        </ul>
     </nav>
 
     <main class="content">
@@ -136,146 +22,26 @@
             <p>Please select an application from the sidebar menu to view its specific Privacy Policy.</p>
         </div>
 
-        <div id="chanda-calculator-policy" class="policy-content">
-            <h2>Chanda Calculator Privacy Policy</h2>
-            <p><strong>Last Updated:</strong> April 2, 2025</p>
-
-            <h3>Introduction</h3>
-            <p>This Privacy Policy describes how the Chanda Calculator application ("App") handles information when you use it. This App is designed to help members calculate their estimated monthly Chanda contributions based on their status and, optionally, their income.</p>
-            <p>Your privacy is important to us. This App is designed with privacy as a priority.</p>
-
-            <h3>Information We Process</h3>
-            <p>To perform the calculation, the App requires you to input certain information:</p>
-            <ul>
-                <li><strong>Member Status:</strong> You need to select your status (e.g., Atfal, Student, Other). This determines the calculation rules applied.</li>
-                <li><strong>Yearly Income (£):</strong> You have the <strong>option</strong> to enter your yearly income in British Pounds. This is used to calculate income-based Chanda percentages for 'Student' and 'Other' statuses. If you do not provide an income:
-                    <ul>
-                        <li>For 'Student' status, a default income (£100) is used for calculation purposes, or minimums are applied as per the rules.</li>
-                        <li>For 'Other' status, minimum Chanda amounts are applied.</li>
-                    </ul>
-                 </li>
-            </ul>
-            <p>This information is used solely for the purpose of calculating the estimated Chanda amounts (Qiadat, Ijtema, Aam, Jalsa Salana) within the App according to predefined rules.</p>
-
-            <h3>How We Use Your Information</h3>
-            <p>The information you provide (Status and optional Income) is used exclusively to perform the Chanda calculation requested by you. The calculations happen <strong>locally on your device</strong>.</p>
-
-            <h3>Data Storage and Retention</h3>
-            <p>The Chanda Calculator App <strong>does not store</strong> the information you enter (Status, Income) persistently on your device after you close the App. The data is processed in real-time for the calculation and is discarded when the App session ends or the inputs are cleared.</p>
-            <p>We do not have access to the data you enter.</p>
-
-            <h3>Data Sharing</h3>
-            <p>We <strong>do not collect, store remotely, transmit, or share</strong> any personal or financial information you enter into the Chanda Calculator App with us or any third parties. All processing occurs locally on your device.</p>
-
-            <h3>Data Security</h3>
-            <p>As the App processes data locally and does not store or transmit it, the security of the data while using the App relies on the general security of your own device (e.g., device passcode, operating system security).</p>
-
-            <h3>Children's Privacy</h3>
-            <p>While the App includes an "Atfal" status for calculation purposes, the App is not intended for direct use by children without the supervision of a parent or guardian. We do not knowingly collect any personally identifiable information. The status selection and optional income are used only for the calculation as described.</p>
-
-            <h3>Changes to This Privacy Policy</h3>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the App or associated documentation. You are advised to review this Privacy Policy periodically for any changes.</p>
-
-            <h3>Contact Us</h3>
-            <p>If you have any questions about this Privacy Policy, please contact us at: dac.developer.acc@outlook.com</p>
-        </div>
-
-        </main>
-
+    </main>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get references to sidebar links, content sections, and default message
-            const appLinks = document.querySelectorAll('.sidebar ul li a');
-            const policyContents = document.querySelectorAll('.policy-content');
-            const defaultMessage = document.getElementById('default-message');
+        const appList = document.getElementById('app-list');
 
-            /**
-             * Displays a specific policy section based on its ID and highlights the corresponding link.
-             * Hides all other policy sections. Shows default message if ID is invalid or null.
-             * @param {string|null} policyId - The ID of the policy section to display (without '#'), or null to show default.
-             */
-            function displayPolicy(policyId) {
-                let policyDisplayed = false; // Flag to track if a valid policy was shown
-
-                // Hide all policy content sections first
-                policyContents.forEach(content => {
-                    content.classList.remove('active');
+        fetch('policies.json')
+            .then(response => response.json())
+            .then(files => {
+                files.forEach(file => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `#${file}-policy`;
+                    link.textContent = file.replace(/-/g, ' ').replace(/policy/ig, '').trim();
+                    listItem.appendChild(link);
+                    appList.appendChild(listItem);
                 });
+            })
+            .catch(error => console.error('Error fetching policies:', error));
 
-                // Remove the 'active-link' class from all sidebar links
-                appLinks.forEach(navLink => {
-                     navLink.classList.remove('active-link');
-                });
-
-                // If a valid policyId is provided, try to show it
-                if (policyId) {
-                    const targetPolicy = document.getElementById(policyId);
-                    if (targetPolicy) {
-                        targetPolicy.classList.add('active'); // Show the target policy
-                        policyDisplayed = true;
-
-                        // Highlight the corresponding link in the sidebar
-                        appLinks.forEach(navLink => {
-                            // Check if the link's href matches the target policy ID (including '#')
-                            if (navLink.getAttribute('href') === '#' + policyId) {
-                                navLink.classList.add('active-link');
-                            }
-                        });
-                    }
-                }
-
-                // If no specific policy was displayed (e.g., invalid ID, no ID provided), show the default message
-                if (!policyDisplayed && defaultMessage) {
-                     defaultMessage.classList.add('active');
-                }
-            }
-
-            /**
-             * Handles clicks on the sidebar links.
-             * Prevents default navigation, updates URL hash, and displays the selected policy.
-             * @param {Event} event - The click event object.
-             */
-            function handleLinkClick(event) {
-                event.preventDefault(); // Stop the browser from jumping to the anchor
-                const link = event.currentTarget; // Get the clicked link element
-                const targetPolicyId = link.getAttribute('href').substring(1); // Get ID from href (remove '#')
-
-                // Manually update the URL hash without causing a page jump/scroll
-                if (window.history.pushState) {
-                    // Use pushState to change the hash without triggering hashchange immediately (smoother)
-                    window.history.pushState(null, '', '#' + targetPolicyId);
-                } else {
-                    // Fallback for older browsers
-                    window.location.hash = '#' + targetPolicyId;
-                }
-
-
-                // Display the clicked policy section
-                displayPolicy(targetPolicyId);
-            }
-
-            /**
-             * Reads the current URL hash and displays the corresponding policy.
-             * Called on initial load and when the hash changes (e.g., back/forward buttons).
-             */
-            function handleHashChange() {
-                const currentHash = window.location.hash.substring(1); // Get hash without '#'
-                displayPolicy(currentHash); // Display policy based on hash, or default if hash is empty/invalid
-            }
-
-            // Add click listeners to all sidebar links
-            appLinks.forEach(link => {
-                link.addEventListener('click', handleLinkClick);
-            });
-
-            // Listen for changes in the URL hash (e.g., browser back/forward buttons)
-            window.addEventListener('hashchange', handleHashChange);
-
-            // Call handleHashChange on initial page load to show the correct policy if a hash is present
-            handleHashChange();
-
-        });
     </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

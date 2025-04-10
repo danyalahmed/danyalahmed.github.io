@@ -1,0 +1,111 @@
+/* Basic Reset & Body Style */
+body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ line-height: 1.6;
+ display: flex; /* Use flexbox for layout */
+ min-height: 100vh; /* Ensure layout takes full viewport height */
+ background-color: #f8f9fa; /* Light background for the page */
+}
+
+/* Sidebar Styles */
+.sidebar {
+ width: 220px; /* Width of the sidebar */
+ background-color: #e9ecef; /* Sidebar background color */
+ padding: 20px;
+ border-right: 1px solid #ced4da; /* Separator line */
+ height: 100vh; /* Full height */
+ position: sticky; /* Keep sidebar visible on scroll */
+ top: 0;
+ overflow-y: auto; /* Add scrollbar if content overflows */
+}
+
+.sidebar h2 {
+ margin-top: 0;
+ color: #495057;
+ text-align: center;
+ border-bottom: 1px solid #adb5bd;
+ padding-bottom: 10px;
+}
+
+.sidebar ul {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.sidebar ul li a {
+ display: block;
+ padding: 10px 15px;
+ text-decoration: none;
+ color: #007bff; /* Link color */
+ border-radius: 4px;
+ margin-bottom: 5px;
+ transition: background-color 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+ background-color: #dee2e6; /* Hover background */
+ color: #0056b3; /* Darker link color on hover */
+}
+
+.sidebar ul li a.active-link {
+ background-color: #007bff; /* Active link background */
+ color: #fff; /* Active link text color */
+ font-weight: bold;
+}
+
+/* Content Area Styles */
+.content {
+ flex-grow: 1; /* Takes remaining width */
+ padding: 30px;
+ overflow-y: auto; /* Allow content scrolling */
+}
+
+.content h1 {
+ color: #343a40;
+ border-bottom: 2px solid #dee2e6;
+ padding-bottom: 10px;
+ margin-top: 0;
+}
+
+/* Individual Policy Styles */
+.policy-content {
+ display: none; /* Hide all policies by default */
+ background-color: #ffffff; /* White background for policy text */
+ border: 1px solid #dee2e6; /* Subtle border */
+ padding: 20px;
+ margin-top: 20px;
+ border-radius: 5px;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.policy-content.active {
+ display: block; /* Show the active policy */
+}
+
+.policy-content h2 {
+ color: #495057;
+ margin-top: 0;
+}
+
+.policy-content h3 {
+ color: #6c757d;
+ margin-top: 1.5em;
+ margin-bottom: 0.5em;
+}
+
+.policy-content p,
+.policy-content ul,
+.policy-content ol {
+ margin-bottom: 1em;
+}
+
+.policy-content strong {
+ color: #343a40;
+}
+
+/* Initial message style */
+#default-message {
+ /* Inherits .policy-content styles but we ensure it's active initially */
+}
