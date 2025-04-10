@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get references to sidebar links, content sections, and default message
-    const defaultMessage = document.getElementById('default-message');
     const content = document.querySelector('main.content');
 
     /**
-     * Displays a specific policy section based on its ID and highlights the corresponding link.
-     * Hides all other policy sections. Shows default message if ID is invalid or null.
-     * @param {string|null} policyId - The ID of the policy section to display (without '#''), or null to show default.
+     * Displays a specific policy section based on its ID.
+     * @param {string|null} policyId - The ID of the policy section to display, or null for the default message.
      */
     function displayPolicy(policyId) {
         if (policyId) {
-            fetch(`/policies/${policyId}.html`) // Corrected URL construction
+            fetch(`/policies/${policyId}.html`)
                 .then(response => response.text())
                 .then(data => {
                     content.innerHTML = data;
@@ -29,49 +26,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /**
      * Handles clicks on the sidebar links.
-     * Prevents default navigation, updates URL hash, and displays the selected policy.
      * @param {Event} event - The click event object.
      */
-    function handleLinkClick(event) {
-        event.preventDefault(); // Prevent default link behavior
+    function handleSidebarClick(event) {
+        const link = event.target.closest('a');
+        if (link) {
+            event.preventDefault();
+            const href = link.getAttribute('href');
 
-        const link = event.currentTarget; // Get the clicked link element
-        const href = link.getAttribute('href');
-        let targetPolicyId = href && href.startsWith('#') ? href.substring(1) : null; // Validate href and get ID
+            if (href === 'index.html') {
+                window.location.href = 'index.html'; // Full page load for index
+                return;
+            }
 
-        // Manually update the URL hash without causing a page jump/scroll
-        let newHash = '';
-        if (targetPolicyId) {
-            newHash = '#' + targetPolicyId;
+            let targetPolicyId = href && href.startsWith('#') ? href.substring(1) : null;
+
+            if (targetPolicyId) {
+                // Update the URL hash
+                if (window.history.pushState) {
+                    window.history.pushState(null, '', '#' + targetPolicyId);
+                } else {
+                    window.location.hash = '#' + targetPolicyId;
+                }
+
+                displayPolicy(targetPolicyId);
+            }
         }
-
-        if (window.history.pushState) {
-            // Use pushState to change the hash without triggering hashchange immediately (smoother)
-            window.history.pushState(null, '', newHash);
-        } else {
-            // Fallback for older browsers
-            window.location.hash = newHash;
-        }
-
-        // Display the clicked policy section
-        displayPolicy(targetPolicyId);
     }
 
     /**
      * Reads the current URL hash and displays the corresponding policy.
-     * Called on initial load and when the hash changes (e.g., back/forward buttons).
      */
     function handleHashChange() {
-        const currentHash = window.location.hash.substring(1); // Get hash without '#'
-        displayPolicy(currentHash || null); // Display policy based on hash, or default if hash is empty/invalid
+        const currentHash = window.location.hash.substring(1);
+        displayPolicy(currentHash || null);
     }
 
-    // Listen for changes in the URL hash (e.g., browser back/forward buttons)
+    // Attach event listener to the sidebar
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.addEventListener('click', handleSidebarClick);
+
+    // Listen for changes in the URL hash
     window.addEventListener('hashchange', handleHashChange);
 
-    // Attach event listeners to sidebar links, excluding the index link
-    const sidebarLinks = document.querySelectorAll('.sidebar a:not([href="#index.html"])');
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', handleLinkClick);
-    });
+    // Initial load: display policy based on the initial hash, if present
+    handleHashChange();
 });
