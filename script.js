@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fetch(`/policies/${policyId}.html`)
                 .then(response => response.text())
                 .then(data => {
-                    content.innerHTML = data;
+                    content.innerHTML = `<div class="policy-content active">${data}</div>`;
                 })
                 .catch(error => {
                     console.error('Error fetching policy:', error);
